@@ -1,0 +1,233 @@
+html{
+    height: 100%;
+    min-height: 100%;
+}
+
+/* Can be harmful */
+body {
+    margin:0px;
+    padding:0px;
+}
+/*----------------*/
+
+.App {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+
+.Main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 80%;
+    background-color: dodgerblue;
+    flex: 2;
+    align-items: stretch;
+    position: relative;
+    font-family: Carlito;
+}
+
+.Header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-height: 15%;
+    background-color: cornflowerblue;
+    flex: 1;
+    object-fit: contain;
+}
+
+.Footer {
+    width: 100%;
+    max-height: 5%;
+    background-color: royalblue;
+}
+.Menu {
+    width:  87%;
+    max-height: 10%;
+    text-align: left;
+}
+.menuButton {
+    box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+    background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+    background-color: #79bbff;
+    border-radius: 6px;
+    border: 1px solid #84bbf3;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+    .menuButton:hover {
+            background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+            background-color: #378de5;
+        }
+
+    .menuButton:active {
+            position: relative;
+            top: 1px;
+    }
+
+.Logo {
+    flex: 1;
+    max-width: 10%;
+    text-align: center;
+}
+
+.LogoImage {
+    max-width:100%;
+    max-height:100%;
+    border-radius: 40px;
+}
+
+.Content {
+    flex: 2;
+    min-height: 95vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.ContentContainer {
+    width: 100%;
+    max-height: 100%;
+    align-content: center;
+    justify-content: center;
+}
+
+.offices {
+    width: 90vw;
+    max-width: 1170px;
+    margin: 5rem auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+
+.office {
+    background-color: white;
+    border: solid;
+    border-width: medium;
+    border-color: gray;
+    margin-top:5px;
+}
+    .office h2, h1 {
+        margin: 0px;
+    }
+
+.userLogo {
+    margin-left: auto;
+    margin-right: 0;
+    max-width: 3%;
+}
+    .userLogo img {
+        max-width: 100%
+    }
+    .userLogo input {
+        max-width: 100%;    
+    }
+
+.button {
+    box-shadow: 0px 10px 14px -7px #276873;
+    background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    background-color: #599bb3;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #3d768a;
+    margin: 5px;
+}
+
+    .button:hover {
+        background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+        background-color: #408c99;
+    }
+
+    .button:active {
+        position: relative;
+        top: 1px;
+    }
+
+
+.adminButton {
+    box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+    background: linear-gradient(to bottom, #79bbff 5%, #44c767 100%);
+    background-color: #44c767;
+    border-radius: 6px;
+    border: 1px solid #84bbf3;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 5px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+    .adminButton:hover {
+        background: linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+        background-color: #44c767;
+    }
+
+    .adminButton:active {
+        position: relative;
+        top: 1px;
+    }
+
+.error {
+    color: red;
+    background-color: white;
+    margin-top: 50px;
+}
+
+.manageLabel {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}
+
+.manageInput {
+    display: inline-block;
+    float: left;
+}
+
+.manageCarAutoComplete {
+   width: 300px; 
+   margin-top:20px;
+}
+
+.manageButton {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 10px;
+
+}
