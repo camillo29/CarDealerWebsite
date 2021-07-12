@@ -64,5 +64,5 @@ module.exports = {
                 } else res.status(400).send({ message: "Wrong password"});
 
             }).catch(error => res.status(400).send(error));
-    }
+        }
 };

@@ -8,12 +8,12 @@ function App(){
     const [accountDetails, setAccountDetails] = useState('');
     return (
         <AppContext.Provider value = {{accountDetails, setAccountDetails}}>
-            <div>
-                <Switch>
+        <div>
+            <Switch>
                     <Route exact path = "/" component = {MainPage}/>
-                    <Route component = {NotFound} />
-                </Switch>
-            </div>
+                <Route component = {NotFound} />
+            </Switch>
+        </div>
         </AppContext.Provider>
     );
 }

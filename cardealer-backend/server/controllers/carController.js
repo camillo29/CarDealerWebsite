@@ -52,7 +52,7 @@ module.exports = {
                 },{
                     model: Office
                 },{
-                    model: Person
+                model: Person
                 }],
         })
         .then(car => res.status(200).send(car))
@@ -75,7 +75,6 @@ module.exports = {
     },
     deleteCar(req, res){
         return Car
-            .findByPk(req.body.carId)
             .then(car => {
                 if (!car)
                     return res.status(400).send({ message: "Car not found!" });
