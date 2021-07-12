@@ -29,7 +29,6 @@ module.exports = {
                     return res.status(400).send({ message: "FuelType not found!" });
                 return fueltype
                     .destroy()
-                    .then(() => res.status(200).send({message : "FuelType deleted!"}))
                     .catch(error => res.status(400).send(error));
             })
             .catch(error => res.status(400).send(error));

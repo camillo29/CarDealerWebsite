@@ -16,29 +16,29 @@ const MainPage = (props) => {
     console.log(cookie.userId);
 
     return (
-            <div>
-                <div className = "App">
-                    <div className = 'Header'> 
-                        <div className = 'Logo'>
+        <div>
+            <div className = "App">
+                <div className = 'Header'> 
+                    <div className = 'Logo'>
                             <img src = {banner} className = {'LogoImage'} alt = ''/> 
-                        </div>
-                        <div className = 'Menu'> 
+                    </div>
+                    <div className = 'Menu'> 
                             <NavBar setMenuChoice = {setMenuChoice} cookie = {cookie}/>
                         </div>
                         <div className = 'userLogo'>
                             <input type='image' src={userLogo} onClick={() => setMenuChoice("Signing")}></input>
-                        </div>
                     </div>
-                    <div className= 'Main'>
-                        <div className = 'Container' className = 'ContentContainer'> 
-                            <div className = "Content">
-                                <Content choice = {menuChoice} cookie = {cookie}/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className = 'Footer'> This is footer</div>
                 </div>
+                <div className= 'Main'>
+                    <div className = 'Container' className = 'ContentContainer'> 
+                        <div className = "Content">
+                                <Content choice = {menuChoice} cookie = {cookie}/>
+                        </div>
+                    </div>
+                </div>
+                <div className = 'Footer'> This is footer</div>
             </div>
+        </div>
     );
 }
 

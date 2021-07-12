@@ -28,7 +28,7 @@ module.exports = (app) => {
 
         // Request headers you wish to allow
         res.setHeader("Access-Control-Allow-Headers", "x-access-token, Origin, Content-Type, Accept");
-        
+
         // Set to true if you need the website to include cookies in the requests sent
         // to the API (e.g. in case you use sessions)
         res.setHeader('Access-Control-Allow-Credentials', true);
@@ -59,8 +59,7 @@ module.exports = (app) => {
     app.get('/api/getFuelTypeById/:fuelTypeId', fuelTypeController.getFuelTypeById);
     app.get('/api/getGearBoxTypeById/:gearBoxTypeId', gearBoxTypeController.getGearBoxTypeById);
     app.get('/api/getOfficeById/:officeId', officeController.getOfficeById);
-    app.get('/api/getPersonById/:personId', personController.getPersonById)
-    app.get('/api/getPersonByUserId/:userId', [authJwt.verifyToken], personController.getPersonByUserId)
+    app.get('/api/getPersonByUserId/:userId', [authJwt.verifyToken], personController.getPersonByUserId);
     app.get('/api/getUserAndRolesByUserId/:userId', [authJwt.verifyToken], userController.getUserAndRolesByUserId);
 
     app.put('/api/addBuyerToCar/:carId', carController.addBuyerToCar);

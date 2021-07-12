@@ -22,23 +22,14 @@ module.exports = {
             .then(person => res.status(200).send(person))
             .catch(error => res.status(400).send(error));
     },
-    getPersonById(req, res){
+    getPersonByUserId(req, res){
         return Person
-            .findByPk(req.params.personId,{
-            include: [{
-                model: User
-                },{
-                model: Role,    //?
-                as: 'roles'     //?
-                }]
+            .findOne({
+                where: {
+                    userId: req.params.userId,
+                }
             })
             .then(person => res.status(200).send(person))
             .catch(error => res.status(400).send(error));
     },
-    getPersonByUserId(req, res){
-        return Person
-            .findOne({ where: { userId: req.params.userId } })
-            .then(person => res.status(200).send(person))
-            .catch(error => res.status(400).send(error));
-    }
 };
