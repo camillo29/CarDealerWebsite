@@ -4,6 +4,13 @@ html{
     min-height: 100%;
 }
 
+/* Can be harmful */
+body {
+    margin:0px;
+    padding:0px;
+}
+/*----------------*/
+
 .App {
     text-align: center;
     display: flex;
@@ -42,7 +49,7 @@ html{
     background-color: royalblue;
 }
 .Menu {
-    width:  70%;
+    width:  87%;
     max-height: 10%;
     text-align: left;
 }
@@ -58,11 +65,12 @@ html{
     font-family: Arial;
     font-size: 15px;
     font-weight: bold;
-    padding: 8px 30px;
+    padding: 8px 10px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #528ecc;
     margin-right: 5px;
     margin-left: 5px;
+    margin-top: 5px;
 }
 
 .menuButton:hover {
@@ -77,12 +85,13 @@ html{
 
 .Logo {
     flex: 1;
-    width: 10%;
+    max-width: 10%;
     text-align: center;
 }
 
 .LogoImage {
-    width: 30%;
+    max-width:100%;
+    max-height:100%;
     border-radius: 40px;
 }
 
@@ -100,3 +109,212 @@ html{
     align-content: center;
     justify-content: center;
 }
+
+.offices {
+    width: 90vw;
+    max-width: 1170px;
+    margin: 5rem auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.office {
+    background-color: white;
+    border: solid;
+    border-width: medium;
+    border-color: darkblue;
+    margin:5px;
+}
+    .office h2, h1 {
+        margin: 0px;
+    }
+
+.userLogo {
+    margin-left: auto;
+    margin-right: 0;
+    max-width: 3%;
+}
+    .userLogo img {
+        max-width: 100%
+    }
+    .userLogo input {
+        max-width: 100%;    
+    }
+
+.button {
+    box-shadow: 0px 10px 14px -7px #276873;
+    background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    background-color: #599bb3;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #3d768a;
+    margin: 5px;
+}
+
+    .button:hover {
+        background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+        background-color: #408c99;
+    }
+
+    .button:active {
+        position: relative;
+        top: 1px;
+    }
+
+
+.adminButton {
+    box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+    background: linear-gradient(to bottom, #79bbff 5%, #44c767 100%);
+    background-color: #44c767;
+    border-radius: 6px;
+    border: 1px solid #84bbf3;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 5px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+    .adminButton:hover {
+        background: linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+        background-color: #44c767;
+    }
+
+    .adminButton:active {
+        position: relative;
+        top: 1px;
+    }
+
+.error {
+    color: red;
+    background-color: white;
+    margin-top: 50px;
+}
+
+.manageLabel {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}
+
+.manageInput {
+    display: inline-block;
+    float: left;
+    margin: 5px;
+}
+
+.manageAutocompletes {
+    display: flex;
+    flex-direction: row;
+}
+
+.manageCarAutoComplete {
+    width: 300px;
+    margin-top: 20px;
+    background-color: white;
+}
+
+.searchBar {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.searchCarAutoComplete {
+    width: 200px;
+    margin: 10px;
+    background-color: white;
+}
+
+.manageButton {
+    width: 60px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 10px;
+
+}
+
+.clientButton {
+    box-shadow: inset 0px 1px 0px 0px #e67a73;
+    background: linear-gradient(to bottom, #e4685d 5%, #e4685d 100%);
+    background-color: #e4685d;
+    border-radius: 6px;
+    border: 1px solid #ffffff;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 5px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+    .clientButton:hover {
+        background: linear-gradient(to bottom, #72b352 5%, #eb675e 100%);
+        background-color: #eb675e;
+    }
+
+    .clientButton:active {
+        position: relative;
+        top: 1px;
+    }
+
+.carImg {
+    max-height: 400px;
+    max-width: 300px;
+}
+
+.cars {
+    width: 90vw;
+    max-width: 1170px;
+    margin: 5rem auto;
+    display: grid;
+
+}
+
+.car {
+    background-color: white;
+    border: solid;
+    border-width: medium;
+    border-color: darkblue;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.iconImage {
+        max-width: 40px;
+        max-height: 40px;
+    }
+
+.loggingSection {
+    background-color: white;
+    border: solid;
+    border-width: medium;
+    border-color: darkblue;
+    border-radius: 40px;
+    margin: 5px;
+}
+

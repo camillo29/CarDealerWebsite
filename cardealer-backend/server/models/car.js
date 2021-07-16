@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
 		price: {
 			type: DataTypes.INTEGER,
 			allowNull:false
+		},
+		image: {
+			type: DataTypes.STRING,
+			allowNull: true
 		}
 	});
 	Car.associate = (models) => {
@@ -26,14 +30,14 @@ module.exports = (sequelize, DataTypes) => {
 		});
 		Car.belongsTo(models.GearBoxType, {
 			foreignKey: 'gearBoxTypeId',
-		})
+		});
 		Car.belongsTo(models.Office, {
 			foreignKey: 'officeId',
-		})
+		});
 		Car.belongsTo(models.Person, {
 			foreignKey: 'personId',
 			allowNull: true
-		})
+		});
 	};
 	return Car;
 };

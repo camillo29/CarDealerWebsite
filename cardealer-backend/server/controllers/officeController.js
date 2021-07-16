@@ -26,13 +26,13 @@ module.exports = {
     },
     deleteOfficeById(req, res){
         return Office
-            .findByPk(req.params.officeId)
+            .findByPk(req.body.officeId)
             .then(office => {
                 if (!office)
                     return res.status(400).send({ message: "Office not found!" });
                 return office
                     .destroy()
-                    .then(() => res.status(204).send())
+                    .then(() => res.status(200).send({message: "Office deleted!"}))
                     .catch(error => res.status(400).send(error));
             })
             .catch(error => res.status(400).send(error));

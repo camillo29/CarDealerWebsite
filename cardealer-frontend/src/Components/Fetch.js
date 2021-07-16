@@ -1,15 +1,42 @@
-import { useState, useEffect } from 'react';
+export const handleCancelReservation = (carId, refetch, setRefetch, cookie) => {
+	const url = 'http://localhost:8000/api/addReservationToCar'
+	let payload = {
+		carId: carId,
+		personId: null,
+	}
+	let options = {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json',
+			'x-access-token': cookie.userToken.token,
+		}, body: JSON.stringify(payload)
+	}
 
-export const useFetch = (url) => {
-    const [items, setItems] = useState([]);
-    const getItems = async () => {
-        const response = await fetch(url);
-        const fetchedItems = await response.json();
-        setItems(fetchedItems);
-    }
-    useEffect(() => {
-        getItems();
-    }, [url]);
+	fetch(url, options)
+		.then(response => response.json())
+		.then(result => {
+			//console.log(result)	//DEBUG
+			setRefetch(!refetch);
+			return;
+		});
+}
 
-    return { items };
-};
+export const fetchPerson = (cookie, setPerson) => {
+	if (cookie.userId && cookie.userToken) {
+		const url = 'http://localhost:8000/api/getPersonByUserId/' + cookie.userId.userId;
+		let options = {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json',
+				'x-access-token': cookie.userToken.token,
+			}
+		}
+		fetch(url, options)
+			.then(response => response.json())
+			.then(result => {
+				setPerson(result);
+			});
+	}
+}

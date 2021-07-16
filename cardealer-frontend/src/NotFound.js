@@ -1,9 +1,10 @@
-import { Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import HomePage from './MainPage'
 const NotFound = () => {
 	return (
-		<div> Page not found 
-			<Route to = "/" component = {HomePage} > Back to HomePage </Route> 
+		<div> 
+			<h1>Page not found</h1>
+			<Link to="/"> HOME </Link>
 		</div>
 	);
 }

@@ -23,13 +23,13 @@ module.exports = {
     },
     deleteCarBrandById(req, res){
         return CarBrand
-            .findByPk(req.params.carBrandId)
+            .findByPk(req.body.carBrandId)
             .then(carbrand => {
                 if (!carbrand)
                     return res.status(400).send({ message: "CarBrand not found!" });
                 return carbrand
                     .destroy()
-                    .then(() => res.status(204).send())
+                    .then(() => res.status(200).send({message: "CarBrand deleted"}))
                     .catch(error => res.status(400).send(error));
             })
             .catch(error => res.status(400).send(error));

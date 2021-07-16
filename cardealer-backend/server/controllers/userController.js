@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 
 module.exports = {
-    create(req, res) {
+    create(req, res, next) {
         return User
             .create({
                 eMail: req.body.eMail,
@@ -47,5 +47,22 @@ module.exports = {
                 else return res.status(400).send({ message: "Wrong password" });
             })
             .catch(error => res.status(400).send(error));   
+        },
+    changePassword(req, res){
+        return User
+            .findByPk(req.body.userId)
+            .then(user => {
+                if (!user)
+                    return res.status(400).send({ message: "User not found" });
+                if (bcrypt.compareSync(req.body.oldPassword, user.password)) {
+                    return user
+                        .update({
+                            password: bcrypt.hashSync(req.body.newPassword, 8)
+                        })
+                        .then(() => res.status(200).send({ message: "Password changed!" }))
+                        .catch(error => res.status(400).send(error));
+                } else res.status(400).send({ message: "Wrong password"});
+
+            }).catch(error => res.status(400).send(error));
         }
 };

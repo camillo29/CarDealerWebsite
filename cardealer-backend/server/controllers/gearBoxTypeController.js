@@ -23,13 +23,13 @@ module.exports = {
     },
     deleteGearBoxTypeById(req, res){
         return GearBoxType
-            .findByPk(req.params.gearBoxTypeId)
+            .findByPk(req.body.gearBoxTypeId)
             .then(gearboxtype => {
                 if (!gearboxtype)
                     return res.status(400).send({ message: "GearBoxType not found!" });
                 return gearboxtype
                     .destroy()
-                    .then(() => res.status(204).send())
+                    .then(() => res.status(200).send({message: "GearBox type deleted!"}))
                     .catch(error => res.status(400).send(error));
             })
             .catch(error => res.status(400).send(error));
