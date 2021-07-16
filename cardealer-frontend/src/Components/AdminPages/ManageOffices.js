@@ -43,7 +43,7 @@ const ManageOffices = (props) => {
                 .then(response => response.json())
                 .then(result => {
                     if (result.error) {
-                        console.log(error);
+                        console.log(error); //DEBUG
                         return;
                     }
                     setCity('');
@@ -74,7 +74,7 @@ const ManageOffices = (props) => {
             .then(result => {
                 if (result.error) {
                     setReFetch(!reFetch);
-                    console.log(result.error);
+                    console.log(result.error);  //DEBUG
                     setError('Cant delete Office while cars of that office exists!');
                     return;
                 } if (result.message === "Office not found!") return;
@@ -96,7 +96,7 @@ const ManageOffices = (props) => {
                             <h2> {office.city} </h2>
                             <h2> {office.street} {office.postCode}</h2>
                             <h2> {office.phoneNumber} </h2>
-                            <button type='button' style={{ width: '35px', height: '35px'}} onClick = {()=>handleRemove(office.id)}> X </button>
+                            <button type='button' style={{ width: '60px', height: '35px'}} onClick = {()=>handleRemove(office.id)}> Delete </button>
                         </div>
                     );
                 })}

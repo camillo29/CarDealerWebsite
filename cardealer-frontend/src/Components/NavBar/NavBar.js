@@ -20,35 +20,35 @@ const NavBar = (props) => {
             fetch(url, options)
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result.roles);
+                    //console.log(result.roles);    //DEBUG
                     setAccountDetails({userRoles: result.roles});
                 });
         }
     }
 
     useEffect(() => {
-        console.log('navBar useEffect');
-        console.log(accountDetails);
+        //console.log('navBar useEffect');  //DEBUG
+        //console.log(accountDetails);      //DEBUG
         if ((accountDetails === null || accountDetails === '') && props.cookie.userId !== null) {
             getUserRoles();
         }
         if(!props.cookie.userId){
-            console.log('account details = null')
+            //console.log('account details = null') //DEBUG
             setAccountDetails(null);
         }
     }, [props.cookie])
 
     const showRoles = () => {
-        console.log('show roles');
+        //console.log('show roles');    //DEBUG
         if(accountDetails && accountDetails.userRoles){
             return (
                accountDetails.userRoles.map((role) => {
                     if(role.name === 'client') {
-                        console.log('returning client section');
+                        //console.log('returning client section');  //DEBUG
                         return <ClientSection setMenuChoice = {props.setMenuChoice} />
                     }
                     if(role.name === 'admin'){
-                        console.log('returning admin section');
+                        //console.log('returning admin section');   //DEBUG
                         return <AdminSection setMenuChoice={props.setMenuChoice} />
                     }
                 })

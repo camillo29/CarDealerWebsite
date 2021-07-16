@@ -88,18 +88,6 @@ module.exports = (app) => {
     app.delete('/api/deleteOffice', [authJwt.verifyToken, authJwt.isAdmin], officeController.deleteOfficeById);
     app.delete('/api/removeRoleFromUser',[authJwt.verifyToken, authJwt.isAdmin] ,userRoleController.delete);
 
-    /*app.post('/api/fileTest', (req, res) => {
-        upload(req,res, (err) => {
-            if (!req.files.image) res.status(400).send({ message: 'FILE DONT EXIST' });
-            if(err){
-                res.status(400).send(err);
-            }
-            else {
-                console.log(req.files.image);
-                res.status(200).send({message:'OK'});
-            }
-        })
-    })*/
 
     app.post('/api/fileTest', upload.single('image'), function(req, res, next){
         if (!req.files.image) res.status(400).send({ message: 'FILE DONT EXIST' });

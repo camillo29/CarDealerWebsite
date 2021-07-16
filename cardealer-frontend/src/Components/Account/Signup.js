@@ -9,6 +9,7 @@ const Signup = (props) => {
     const [repeatPassword, setRepeatPassword] = useState('');
     const [userId, setUserId] = useState('');
     const [error, setError] = useState('');
+    const [info, setInfo] = useState('');
 
     const handleSubmit = () => {
         if(name && surname && phoneNumber && eMail && passWord===repeatPassword){
@@ -17,7 +18,9 @@ const Signup = (props) => {
     }
 
     useEffect(()=>{
-        if(userId !== null && userId !== ''){
+        if(passWord !== repeatPassword)
+            setError('Passwords doesnt match!')
+        else if(userId !== null && userId !== ''){
             fetchPerson();
             fetchLinkUserAndRole();
         }
@@ -49,7 +52,6 @@ const Signup = (props) => {
                     setError('Wrong password');
                     return;
                 }
-                console.log(result.id);
                 setUserId(result.id);
             })
     }
@@ -76,7 +78,7 @@ const Signup = (props) => {
             .then(response => response.json())
             .then(result => {
                 if (result.error) {
-                    console.log(result.error)
+                    console.log(result.error)   //DEBUG
                     return;
                 }
             })
@@ -101,42 +103,55 @@ const Signup = (props) => {
             .then(response => response.json())
             .then(result => {
                 if (result.error) {
-                    console.log(result.error)
+                    console.log(result.error)   //DEBUG
                     return;
                 }
+                else {
+                    setError('');
+                    setName('');
+                    setSurname('');
+                    setPhoneNumber('');
+                    setEMail('');
+                    setPassWord('');
+                    setRepeatPassword('');
+                    setInfo('Registered!');
+                    }
             })
     }
 
     return (
         <div>
             <h1> Sign up </h1>
-            <form>
-                <div>
-                    <label className = 'manageLabel'>Name:</label> <input type = 'text' className = 'manageInput' onChange = {(e) => setName(e.target.value)} />
-                </div>
-                <div>
-                    <label className='manageLabel'>Surname:</label> <input type='text' className='manageInput' onChange = {(e) => setSurname(e.target.value)} />
-                </div>
-                <div>
-                    <label className='manageLabel'>PhoneNumber:</label> <input type='number' className='manageInput' onChange = {(e) => setPhoneNumber(e.target.value)} />
-                </div>
-                <div>
-                    <label className='manageLabel'>Email:</label> <input type='email' className='manageInput' onChange = {(e) => setEMail(e.target.value)} />
-                </div>
-                <div>
-                    <label className='manageLabel'>Password:</label> <input type='password' className='manageInput' onChange = {(e) => setPassWord(e.target.value)} />
-                </div>
-                <div>
-                    <label className='manageLabel'>Repeat password:</label> <input type='password' className='manageInput' onChange = {(e) => setRepeatPassword(e.target.value)} />
-                </div>
-                <div className = 'error'>
-                    <h1> {error} </h1>
-                </div>
-                <div>
-                    <button type = 'button' className = 'button' onClick = {() => handleSubmit()}>Sign up</button>
-                </div>
-            </form>
-
+            <div className='loggingSection'>
+                <form>
+                    <div>
+                        <label className = 'manageLabel'>Name:</label> <input type = 'text' className = 'manageInput' onChange = {(e) => setName(e.target.value)} />
+                    </div>
+                    <div>
+                        <label className='manageLabel'>Surname:</label> <input type='text' className='manageInput' onChange = {(e) => setSurname(e.target.value)} />
+                    </div>
+                    <div>
+                        <label className='manageLabel'>Phone number:</label> <input type='number' className='manageInput' onChange = {(e) => setPhoneNumber(e.target.value)} />
+                    </div>
+                    <div>
+                        <label className='manageLabel'>Email:</label> <input type='email' className='manageInput' onChange = {(e) => setEMail(e.target.value)} />
+                    </div>
+                    <div>
+                        <label className='manageLabel'>Password:</label> <input type='password' className='manageInput' onChange = {(e) => setPassWord(e.target.value)} />
+                    </div>
+                    <div>
+                        <label className='manageLabel'>Repeat password:</label> <input type='password' className='manageInput' onChange = {(e) => setRepeatPassword(e.target.value)} />
+                    </div>
+                    
+                    <div>
+                        <button type = 'button' className = 'button' onClick = {() => handleSubmit()}>Sign up</button>
+                    </div>
+                </form>
+            </div>
+            <div className='error'>
+                <h1> {error} </h1>
+            </div>
+            {info}
             <button type='submit' className='button' onClick={() => props.setMode('signin')}> Back to signing in </button>
         </div>
     );

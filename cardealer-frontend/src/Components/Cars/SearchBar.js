@@ -55,20 +55,41 @@ const SearchBar = (props) =>{
 
 	const handleSearch = () =>{
 		let tmpArray = [];
-		if(carBrand !== null && carBrand != ''){
+		if(carBrand!==null && carBrand!==''){
 			for (let i = 0; i < props.cars.length; i++){
 				if (props.cars[i].CarBrand.id == carBrand.id)
 					tmpArray.push(props.cars[i]);
 			}
 			props.setCars(tmpArray);
 		}
-		if(fuelType !== null && fuelType != ''){
+		tmpArray = [];
+
+		if(fuelType!==null && fuelType!==''){
 			for (let i = 0; i < props.cars.length; i++) {
-				if (props.cars[i].FuelType.id == fuelType.id)
+					if (props.cars[i].FuelType.id == fuelType.id)
+						tmpArray.push(props.cars[i]);
+				}
+				props.setCars(tmpArray);
+		}
+		tmpArray = [];
+
+		if (gearBoxType !== null && gearBoxType !== '') {
+			for (let i = 0; i < props.cars.length; i++) {
+					if (props.cars[i].GearBoxType.id == gearBoxType.id)
+						tmpArray.push(props.cars[i]);
+				}
+				props.setCars(tmpArray);
+		}
+
+		tmpArray = [];
+		if(office!==null && office!==''){
+			for (let i = 0; i < props.cars.length; i++) {
+				if (props.cars[i].Office.id == office.id)
 					tmpArray.push(props.cars[i]);
 			}
 			props.setCars(tmpArray);
 		}
+		tmpArray = [];
 	}
 
 	useEffect(()=>{
@@ -79,43 +100,44 @@ const SearchBar = (props) =>{
 	}, [])
 
 	return (
-		<div>
-			<div>
-				<Autocomplete
-					options={brands}
-					getOptionLabel={(option) => option.name}
-					className='manageCarAutoComplete'
-					onChange={(event, value) => setCarBrand(value)}
-					renderInput={(params) =>
-						<TextField {...params} label="Car brand" variant="outlined" />}
-				/>
-				<Autocomplete
-					options={fuels}
-					getOptionLabel={(option) => option.name}
-					className='manageCarAutoComplete'
-					onChange={(event, value) => setFuelType(value)}
-					renderInput={(params) =>
-						<TextField {...params} label="Fuel type" variant="outlined" />}
-				/>
-				<Autocomplete
-					options={boxes}
-					getOptionLabel={(option) => option.name}
-					className='manageCarAutoComplete'
-					onChange={(event, value) => setGearBoxType(value)}
-					renderInput={(params) =>
-						<TextField {...params} label="Gear box type" variant="outlined" />}
-				/>
-				<Autocomplete
-					options={offices}
-					getOptionLabel={(option) => option.city + ', ' + option.street}
-					className='manageCarAutoComplete'
-					onChange={(event, value) => setOffice(value)}
-					renderInput={(params) =>
-						<TextField {...params} label="Office" variant="outlined" />}
-				/>
+		<>
+			<div className = 'searchBar'>
+					<Autocomplete
+						options={brands}
+						getOptionLabel={(option) => option.name}
+						className='searchCarAutoComplete'
+						style={{ marginLeft: '13%'}}
+						onChange={(event, value) => setCarBrand(value)}
+						renderInput={(params) =>
+							<TextField {...params} label="Car brand" variant="outlined" />}
+					/>
+					<Autocomplete
+						options={fuels}
+						getOptionLabel={(option) => option.name}
+						className='searchCarAutoComplete'
+						onChange={(event, value) => setFuelType(value)}
+						renderInput={(params) =>
+							<TextField {...params} label="Fuel type" variant="outlined" />}
+					/>
+					<Autocomplete
+						options={boxes}
+						getOptionLabel={(option) => option.name}
+						className='searchCarAutoComplete'
+						onChange={(event, value) => setGearBoxType(value)}
+						renderInput={(params) =>
+							<TextField {...params} label="Gear box type" variant="outlined" />}
+					/>
+					<Autocomplete
+						options={offices}
+						getOptionLabel={(option) => option.city + ', ' + option.street}
+						className='searchCarAutoComplete'
+						onChange={(event, value) => setOffice(value)}
+						renderInput={(params) =>
+							<TextField {...params} label="Office" variant="outlined" />}
+					/>
 			</div>
-			<button type = 'button' onClick = {()=>handleSearch()}> SEARCH </button>
-		</div>
+			<div> <button type = 'button' onClick = {()=>handleSearch()} className = 'menuButton'> SEARCH </button> </div>
+		</>
 		
 	);
 }

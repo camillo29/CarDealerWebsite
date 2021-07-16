@@ -21,10 +21,10 @@ const AccountPage = (props) => {
 	return (
 		<div> 
 			<h1> YOUR ACCOUNT DETAILS </h1>
-			<div>
+			<div className='loggingSection'>
 				<h2>NAME: {person.name} {person.surname}</h2>
 				<h2>EMAIL: {person.eMail}</h2>
-				<h2>PHONENUMBER: {person.phoneNumber}</h2>
+				<h2>PHONE NUMBER: {person.phoneNumber}</h2>
 			</div>
 			<div>
 				<button type='button' className='button' onClick={() => handleLogOut()}> Log out </button>

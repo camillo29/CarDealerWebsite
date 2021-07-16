@@ -34,7 +34,7 @@ const ManageFuelTypes = (props) => {
                 .then(response => response.json())
                 .then(result => {
                     if (result.error) {
-                        console.log(error);
+                        console.log(error); //DEBUG
                         return;
                     }
                     setFuelName('');
@@ -62,7 +62,7 @@ const ManageFuelTypes = (props) => {
             .then(result => {
                 if (result.error) {
                     setReFetch(!reFetch);
-                    console.log(result.error);
+                    console.log(result.error);  //DEBUG
                     return;
                 } if (result.message === "FuelType not found!") return;
                 setReFetch(!reFetch);
@@ -84,7 +84,7 @@ const ManageFuelTypes = (props) => {
                                 <label className='manageLabel' style={{ marginLeft: '40px' }}><h2> {fuel.name} </h2></label>
                             </div>
                             <div style = {{float: 'left'}}>
-                                <button type = 'button' className = 'manageButton' onClick = {()=> handleRemove(fuel.id)}> X </button>
+                                <button type = 'button' className = 'manageButton' onClick = {()=> handleRemove(fuel.id)}> Delete </button>
                             </div>
                         </div>
                     );

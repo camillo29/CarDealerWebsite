@@ -16,7 +16,7 @@ export const handleCancelReservation = (carId, refetch, setRefetch, cookie) => {
 	fetch(url, options)
 		.then(response => response.json())
 		.then(result => {
-			console.log(result) //DEBUG
+			//console.log(result)	//DEBUG
 			setRefetch(!refetch);
 			return;
 		});

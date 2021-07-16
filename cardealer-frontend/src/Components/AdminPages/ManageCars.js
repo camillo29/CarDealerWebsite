@@ -122,7 +122,7 @@ const ManageCars = (props) => {
 		.then(response => response.json())
 		.then(result => {
 			if (result.error){
-				console.log(result.error);
+				console.log(result.error);	//DEBUG
 				clearFields();
 				return;
 			}
@@ -150,7 +150,7 @@ const ManageCars = (props) => {
 			.then(result => {
 				if (result.error) {
 					setReFetch(!reFetch);
-					console.log(result.error);
+					console.log(result.error);	//DEBUG
 					return;
 				} if (result.message === "Car not found") return;
 				setReFetch(!reFetch);
@@ -171,8 +171,7 @@ const ManageCars = (props) => {
 		<div> 
 			<h1> Manage Cars </h1>
 			<>
-				<CarsTableHeader />
-				<div>
+				<div className = 'cars'>
 					{cars.map((car, index)=> {
 						return (
 							<>
@@ -198,7 +197,7 @@ const ManageCars = (props) => {
 							<input type="file" name="image" className='manageInput' accept= "image/*" multiple={false} onChange = {(e) => setImage(e.target.files[0])}/>
 						</div>
 					</div>
-					<div>
+					<div style = {{marginLeft: '70%'}}>
 						<Autocomplete
 							options={brands}
 							getOptionLabel={(option) => option.name}

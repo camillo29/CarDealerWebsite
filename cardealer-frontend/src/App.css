@@ -119,13 +119,12 @@ body {
 
 }
 
-
 .office {
     background-color: white;
     border: solid;
     border-width: medium;
-    border-color: gray;
-    margin-top:5px;
+    border-color: darkblue;
+    margin:5px;
 }
     .office h2, h1 {
         margin: 0px;
@@ -218,15 +217,34 @@ body {
 .manageInput {
     display: inline-block;
     float: left;
+    margin: 5px;
+}
+
+.manageAutocompletes {
+    display: flex;
+    flex-direction: row;
 }
 
 .manageCarAutoComplete {
-   width: 300px; 
-   margin-top:20px;
+    width: 300px;
+    margin-top: 20px;
+    background-color: white;
+}
+
+.searchBar {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.searchCarAutoComplete {
+    width: 200px;
+    margin: 10px;
+    background-color: white;
 }
 
 .manageButton {
-    width: 40px;
+    width: 60px;
     height: 40px;
     margin-left: 20px;
     margin-top: 10px;
@@ -264,6 +282,39 @@ body {
     }
 
 .carImg {
-    max-height: 300px;
-    max-width: 200px;
+    max-height: 400px;
+    max-width: 300px;
 }
+
+.cars {
+    width: 90vw;
+    max-width: 1170px;
+    margin: 5rem auto;
+    display: grid;
+
+}
+
+.car {
+    background-color: white;
+    border: solid;
+    border-width: medium;
+    border-color: darkblue;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.iconImage {
+        max-width: 40px;
+        max-height: 40px;
+    }
+
+.loggingSection {
+    background-color: white;
+    border: solid;
+    border-width: medium;
+    border-color: darkblue;
+    border-radius: 40px;
+    margin: 5px;
+}
+

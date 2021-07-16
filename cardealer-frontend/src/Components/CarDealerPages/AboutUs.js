@@ -19,7 +19,7 @@ const AboutUs = () => {
     useEffect(()=>{
         fetchOffices();
     }, [])
-    console.log(offices);
+    //console.log(offices); //DEBUG
     return (
         <div>
             <div ><h1> Our offices </h1> </div>

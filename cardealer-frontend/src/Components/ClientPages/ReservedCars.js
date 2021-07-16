@@ -21,7 +21,7 @@ const ReservedCars = (props) => {
 				.then(response => response.json())
 				.then(result => {
 					setReservedCars(result);
-					console.log(reservedCars) //DEBUG
+					//console.log(reservedCars)		//DEBUG
 				});
 		}
 	}
@@ -36,8 +36,7 @@ const ReservedCars = (props) => {
 			<h1>Reserved cars section</h1>
 			<div>
 				<>
-					<CarsTableHeader />
-					<div>
+					<div className = 'cars'>
 						{reservedCars.map((car) => {
 							return (
 								<Cars car={car} key={car.id} carId={car.id} cookie={props.cookie} handleCancelReservation={handleCancelReservation} cancelReservationButton = {true} refetch = {refetch} setRefetch = {setRefetch}/>

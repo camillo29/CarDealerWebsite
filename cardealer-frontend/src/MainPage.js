@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+﻿import React, {useState, useEffect} from 'react';
 import { useCookies } from 'react-cookie';
 import './App.css';
 import Content from './Components/Content';
@@ -13,8 +13,8 @@ const MainPage = (props) => {
     const [cookie, setCookie, removeCookie] = useCookies(['userToken', 'userId']);
     const [personId, setPersonId] = useState('');
     const { accountDetails, setAccountDetails } = React.useContext(AppContext);
-    console.log(cookie.userToken);
-    console.log(cookie.userId);
+    //console.log(cookie.userToken);    //DEBUG
+    //console.log(cookie.userId);       //DEBUG
 
     const fetchPerson = () => {
         if (cookie.userId && cookie.userToken) {
@@ -31,7 +31,7 @@ const MainPage = (props) => {
                 .then(response => response.json())
                 .then(result => {
                     setPersonId(result.id);
-                    console.log('PersonId:' + personId); //DEBUG
+                    //console.log('PersonId:' + personId); //DEBUG
                 });
         }
     }
@@ -61,7 +61,7 @@ const MainPage = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className = 'Footer'> This is footer</div>
+                <div className='Footer'> Kamil Świątek 2021 (<a href= 'https://github.com/camillo29' style = {{color: 'white'}}>Go to Github</a>)</div>
             </div>
         </div>
     );

@@ -36,7 +36,7 @@ const ManageGearBoxTypes = (props) => {
                 .then(response => response.json())
                 .then(result => {
                     if (result.error) {
-                        console.log(error);
+                        console.log(error); //DEBUG
                         return;
                     }
                     setGearName('');
@@ -64,7 +64,7 @@ const ManageGearBoxTypes = (props) => {
             .then(result => {
                 if (result.error) {
                     setReFetch(!reFetch);
-                    console.log(result.error);
+                    console.log(result.error);  //DEBUG
                     setError('Cant delete Gear box when cars of that brand exists!');
                     return;
                 } if (result.message === "GearBoxType not found!") return;
@@ -87,7 +87,7 @@ const ManageGearBoxTypes = (props) => {
                                 <label className = 'manageLabel' style = {{marginLeft: '40px'}}><h2> {box.name} </h2> </label>
                             </div>
                             <div style={{float: 'left'}}>
-                                <button type = 'button' className = 'manageButton' onClick = {()=> handleRemove(box.id)}>X</button>
+                                <button type = 'button' className = 'manageButton' onClick = {()=> handleRemove(box.id)}>Delete</button>
                             </div>
                         </div>
                     );

@@ -41,7 +41,6 @@ const Signin = (props) => {
                 setCookie('userToken', { token: result.token, userId: result.userId }, { expires: dt, path: '/' });
                 setCookie('userId', { userId: result.userId }, { expires: dt, path: '/' });
                 setAccountDetails({ userId: result.userId });
-                console.log("I'm in");
             })
         
     }
@@ -54,7 +53,7 @@ const Signin = (props) => {
     }
 
     return (
-        <div>
+        <div className='loggingSection'>
             <h1> Loggin in </h1>
             <div>
                 <label className = 'manageLabel'>EMAIL:</label> <input type='text' className = 'manageInput' name = 'eMail' onChange = {(e) => setEMail(e.target.value)}/>

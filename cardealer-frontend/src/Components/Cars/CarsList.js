@@ -23,7 +23,7 @@ const CarsList = (props) => {
 
     const handleReserve = (carId, personId) => {
         const url = 'http://localhost:8000/api/addReservationToCar'
-        console.log(personId);
+        //console.log(personId);    //DEBUG
         let payload = {
                 carId: carId,
                 personId: personId
@@ -40,7 +40,7 @@ const CarsList = (props) => {
         fetch(url, options)
             .then(response => response.json())
             .then(result => {
-                console.log(result)
+                //console.log(result)   //DEBUG
                 setRefetch(!refetch);
                 return;
             });
@@ -55,13 +55,15 @@ const CarsList = (props) => {
 
     return (
         <>
-        {//<SearchBar cars = {cars} setCars = {setCars}/>}
-            <CarsTableHeader />
+        <SearchBar cars = {cars} setCars = {setCars}/>
+        <button type = 'button' style = {{margin:'5px'}} className = 'menuButton' onClick = {() => setRefetch(!refetch)} > RESET </button>
+        <div className = 'cars'>
             {cars.map((car)=>{
                 return (
                     <Cars car={car} key={car.id} carId={car.id} deleteButton={false} reserveButton = {isLogged} handleReserve = {handleReserve} personId = {props.personId}/>
                 );
             })}
+        </div>
         </>
     );
 }

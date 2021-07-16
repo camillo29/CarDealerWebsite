@@ -33,7 +33,7 @@ const ManageBrands = (props) => {
             .then(response => response.json())
             .then(result=>{
                 if (result.error){
-                    console.log(error);
+                    console.log(error); //DEBUG
                     return;
                 }
                 setBrandName('');
@@ -61,7 +61,7 @@ const ManageBrands = (props) => {
             .then(result => {
                 if (result.error) {
                     setReFetch(!reFetch);
-                    console.log(result.error);
+                    console.log(result.error);  //DEBUG
                     setError('Cant delete brand when cars of that brand exists!');
                     return;
                 } if (result.message === "CarBrand not found!") return;
@@ -85,7 +85,7 @@ const ManageBrands = (props) => {
                                 <label className = 'manageLabel' style = {{marginLeft: '40px'}}><h2>{brand.name}</h2></label>
                             </div>
                             <div style={{ float: 'left' }}>
-                                <button type = 'button' className = 'manageButton' onClick = {() => handleRemove(brand.id)}> X </button>
+                                <button type = 'button' className = 'manageButton' onClick = {() => handleRemove(brand.id)}> Delete </button>
                             </div>
                         </div>
                         );
