@@ -3,6 +3,7 @@ import { Cars } from '../Cars/Cars';
 import { CarsTableHeader } from '../Cars/CarsTableHeader';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { handleCancelReservation } from '../Fetch';
 
 import './../../App.css'
 
@@ -24,6 +25,8 @@ const ManageCars = (props) => {
 	const [gearBoxType, setGearBoxType] = useState('');
 	const [office, setOffice] = useState('');
 
+	const [image, setImage] = useState('');
+
 	const [reFetch, setReFetch] = useState(true);
 	
 
@@ -39,6 +42,8 @@ const ManageCars = (props) => {
 			setCars(result);
 		})
 	}
+
+
 
 	const getBrands = () => {
 		const url = 'http://localhost:8000/api/listCarBrands';
@@ -93,23 +98,23 @@ const ManageCars = (props) => {
 
 	const handleAdd = () => {
 		const url = 'http://localhost:8000/api/createCar'
-		let payload = {
-			model: model,
-			engineCapacity: engineCapacity,
-			kilometersTraversed: kilometers,
-			price: price,
-			carBrandId: carBrand.id,
-			fuelTypeId: fuelType.id,
-			gearBoxTypeId: gearBoxType.id,
-			officeId: office.id
-		}
+		var formData = new FormData();
+		formData.append('model', model);
+		formData.append('engineCapacity', engineCapacity);
+		formData.append('kilometersTraversed', kilometers);
+		formData.append('price', price);
+		formData.append('carBrandId', carBrand.id);
+		formData.append('fuelTypeId', fuelType.id);
+		formData.append('gearBoxTypeId', gearBoxType.id);
+		formData.append('officeId', office.id);
+		formData.append('image', image);
+		
 		let options = {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json',
-				'Accept': 'application/json',
+				'Accept': 'multipart/form-data',
 				'x-access-token': props.cookie.userToken.token,
-			}, body: JSON.stringify(payload),
+			}, body: formData
 		}
 
 
@@ -129,7 +134,6 @@ const ManageCars = (props) => {
 
 	const handleRemove = (carId) => {
 		const url = 'http://localhost:8000/api/deleteCar';
-		console.log(url);
 		let payload = {
 			carId: carId,
 		}
@@ -153,8 +157,7 @@ const ManageCars = (props) => {
 				return;
 			})
 	}
-	
-	
+
 	useEffect(()=>{
 		getCars();
 		getBrands();
@@ -163,22 +166,25 @@ const ManageCars = (props) => {
 		getOffices();
 	}, [reFetch])
 
+
 	return (
 		<div> 
 			<h1> Manage Cars </h1>
 			<>
 				<CarsTableHeader />
 				<div>
-					{cars.map((car)=> {
+					{cars.map((car, index)=> {
 						return (
-							<Cars car={car} key={car.id} deleteButton={true} carId = {car.id} cookie = {props.cookie} handleRemove = {handleRemove}/>
-						);
+							<>
+								<Cars car={car} key={car.id} deleteButton={true} carId={car.id} cookie={props.cookie} handleRemove={handleRemove} showReserverInfo={true} handleCancelReservation={handleCancelReservation} cancelReservationButton={true} refetch = {reFetch} setRefetch = {setReFetch}/>
+							</>
+							);
 					})}
 				</div>
 			</>
 			<div>
 				<h2> Add new car </h2>
-				<form>
+				<form encType="multipart/form-data" id = 'addForm'>
 					<div>
 						<div>
 							<label className = 'manageLabel'> Model: </label> <input type='text' className = 'manageInput' value={model} onChange={(e) => setModel(e.target.value)} />
@@ -188,6 +194,8 @@ const ManageCars = (props) => {
 							<label className='manageLabel'>Kilometers traversed:</label> <input type='number' className='manageInput' value={kilometers} onChange={(e) => setKilometers(e.target.value)} />
 						</div> <div>
 							<label className='manageLabel'>Price:</label> <input type='number' className = 'manageInput' value={price} onChange={(e) => setPrice(e.target.value)} />
+						</div><div>
+							<input type="file" name="image" className='manageInput' accept= "image/*" multiple={false} onChange = {(e) => setImage(e.target.files[0])}/>
 						</div>
 					</div>
 					<div>

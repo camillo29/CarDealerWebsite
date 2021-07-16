@@ -9,7 +9,6 @@ const Signin = (props) => {
     const [passWord, setPassWord] = useState('');
     const [error, setError] = useState('');
     const [cookie, setCookie, removeCookie] = useCookies(['userToken', 'userId']);
-    console.log({ EMail }, { passWord });
 
     const fetchToken = () => {
         let payload = {

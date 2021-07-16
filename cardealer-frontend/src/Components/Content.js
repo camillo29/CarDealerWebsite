@@ -7,6 +7,7 @@ import ManageFuelTypes from './AdminPages/ManageFuelTypes';
 import ManageGearBoxTypes from './AdminPages/ManageGearBoxTypes';
 import ManageCars from './AdminPages/ManageCars';
 import ManageOffices from './AdminPages/ManageOffices';
+import ReservedCars from './ClientPages/ReservedCars';
 const Content = (props) => {
     const menuChoice = () => {
         switch(props.choice){
@@ -15,7 +16,7 @@ const Content = (props) => {
             case "About us": 
                 return <AboutUs/>
             case "Cars":
-                return <CarsList/>
+                return <CarsList cookie = {props.cookie} personId = {props.personId}/>
             case "Signing":
                 return <Signing cookie = {props.cookie}/>
             case "Manage car brands":
@@ -28,6 +29,8 @@ const Content = (props) => {
                 return <ManageCars cookie = {props.cookie}/>
             case "Manage offices":
                 return <ManageOffices cookie = {props.cookie}/>
+            case "Reserved cars":
+                return <ReservedCars cookie = {props.cookie} personId = {props.personId}/>
             default:
                 return <HomePage />
         }

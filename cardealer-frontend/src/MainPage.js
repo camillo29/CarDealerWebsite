@@ -11,9 +11,34 @@ import { AppContext } from './App';
 const MainPage = (props) => {
     const [menuChoice, setMenuChoice] = useState('');
     const [cookie, setCookie, removeCookie] = useCookies(['userToken', 'userId']);
+    const [personId, setPersonId] = useState('');
     const { accountDetails, setAccountDetails } = React.useContext(AppContext);
     console.log(cookie.userToken);
     console.log(cookie.userId);
+
+    const fetchPerson = () => {
+        if (cookie.userId && cookie.userToken) {
+            const url = 'http://localhost:8000/api/getPersonByUserId/' + cookie.userId.userId;
+            let options = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'x-access-token': cookie.userToken.token,
+                }
+            }
+            fetch(url, options)
+                .then(response => response.json())
+                .then(result => {
+                    setPersonId(result.id);
+                    console.log('PersonId:' + personId); //DEBUG
+                });
+        }
+    }
+
+    useEffect(()=>{
+        fetchPerson();
+    })
 
     return (
         <div>
@@ -32,7 +57,7 @@ const MainPage = (props) => {
                 <div className= 'Main'>
                     <div className = 'Container' className = 'ContentContainer'> 
                         <div className = "Content">
-                                <Content choice = {menuChoice} cookie = {cookie}/>
+                                <Content choice = {menuChoice} cookie = {cookie} personId = {personId}/>
                         </div>
                     </div>
                 </div>

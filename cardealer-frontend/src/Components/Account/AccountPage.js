@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import ChangePassword from './ChangePassword';
+import { fetchPerson } from '../Fetch';
 import '../../App.css'
 const AccountPage = (props) => {
 	const [cookie, setCookie, removeCookie] = useCookies(['userToken', 'userId']);
@@ -13,28 +14,9 @@ const AccountPage = (props) => {
 		return;
 	}
 
-	const fetchPerson = () => {
-		if (cookie.userId && cookie.userToken) {
-			const url = 'http://localhost:8000/api/getPersonByUserId/' + cookie.userId.userId;
-			let options = {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-					'Accept': 'application/json',
-					'x-access-token': cookie.userToken.token,
-				}
-			}
-			fetch(url, options)
-				.then(response => response.json())
-				.then(result => {
-					setPerson(result);
-				});
-		}
-	}
-
 	useEffect(() => {
-		fetchPerson();
-	}, [cookie]);
+		fetchPerson(props.cookie, setPerson);
+	}, [cookie]); 
 
 	return (
 		<div> 

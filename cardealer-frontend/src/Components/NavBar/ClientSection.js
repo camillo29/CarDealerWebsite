@@ -1,5 +1,10 @@
+import '../../App.css';
 const ClientSection = (props) => {
-    return <div> I am client! </div>
+    return (
+            <> 
+                <button type = 'button' className = 'clientButton' onClick = {()=>props.setMenuChoice('Reserved cars')}> Reserved cars </button>
+            </>
+        );
 }
 
 export default ClientSection;

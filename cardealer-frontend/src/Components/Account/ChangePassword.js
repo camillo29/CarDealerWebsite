@@ -7,8 +7,6 @@ const ChangePassword = (props) => {
     const [error, setError] = useState('');
     const [changedInfo, setChangedInfo] = useState('');
 
-
-
     const handlePasswordChange = () => {
         if (newPassword === repeatPassword && (newPassword != '' && repeatPassword != '' && oldPassword!='')) {
             const url = 'http://localhost:8000/api/changePassword';

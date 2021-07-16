@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import { AppContext } from '../../App'
 import AdminSection from './AdminSection';
 import ClientSection from './ClientSection';
+
 const NavBar = (props) => {
     const { accountDetails, setAccountDetails } = React.useContext(AppContext);
    

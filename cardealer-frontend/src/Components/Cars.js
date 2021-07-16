@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useFetch }  from './Fetch'
 
 const Cars = () => {
     const [cars, setCars] = useState([]);
@@ -15,9 +14,11 @@ const Cars = () => {
                 setCars(result);
             });
     }
+
     useEffect(() => {
         fetchCars();
     }, []);
+
     return (
         <div>
             {cars.map((car, index)=>{
